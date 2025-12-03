@@ -675,42 +675,131 @@
           </div>
 
           <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" class="php-email-form">
-              <div class="row gy-4">
+  <form id="contactForm">
+    <div class="row gy-4">
 
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-                </div>
+      <div class="col-md-6">
+        <input type="text" id="fname" class="form-control" placeholder="Vardas">
+      </div>
 
-                <div class="col-md-6">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-                </div>
+      <div class="col-md-6">
+        <input type="text" id="lname" class="form-control" placeholder="Pavardė">
+      </div>
 
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                </div>
+      <div class="col-md-6">
+        <input type="email" id="email" class="form-control" placeholder="El. paštas">
+      </div>
 
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-                </div>
+      <div class="col-md-6">
+        <input type="text" id="phone" class="form-control" placeholder="Telefono numeris">
+      </div>
 
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
+      <div class="col-md-12">
+        <input type="text" id="address" class="form-control" placeholder="Adresas">
+      </div>
 
-                  <button type="submit">Send Message</button>
-                </div>
+      <div class="col-md-4">
+        <label for="q1" class="form-label text-light">Kaip vertinate website (1–10)</label>
+        <input type="number" id="q1" class="form-control" min="1" max="10" value="10">
+      </div>
 
-              </div>
-            </form>
-          </div>
+      <div class="col-md-4">
+        <label for="q2" class="form-label text-light">Ar grazi diena (1–10)</label>
+        <input type="number" id="q2" class="form-control" min="1" max="10" value="10">
+      </div>
+
+      <div class="col-md-4">
+        <label for="q3" class="form-label text-light">Kaip miegojote (1–10)</label>
+        <input type="number" id="q3" class="form-control" min="1" max="10" value="10">
+      </div>
+
+      <div class="col-md-12 text-center">
+        <button type="submit" id="submitButton">Submit</button>
+      </div>
+
+      <!-- Čia bus vieta rezultatų atvaizdavimui -->
+      <div class="col-md-12 mt-4">
+        <div id="formResult" class="text-start text-light"></div>
+      </div>
+
+    </div>
+  </form>
+
+  <!-- Pop-up pranešimas -->
+  <div id="popupMessage" class="custom-popup d-none">
+    Duomenys pateikti sėkmingai!
+  </div>
+</div>
+
 
         </div>
 
       </div>
 
     </section><!-- /Contact Section -->
+
+          <!-- Game Section -->
+    <section id="game" class="game-section section">
+
+      <div class="container section-title" data-aos="fade-up">
+        <span class="subtitle">Mano Žaidimas</span>
+        <h2>Mano Žaidimas</h2>
+        <p>Pabandyk surasti visas atminties kortelių poras kuo mažiau ėjimų.</p>
+      </div>
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+
+          <!-- Žaidimų lenta + valdikliai -->
+          <div class="col-lg-8">
+
+            <div class="game-controls">
+              <div class="difficulty-select">
+                <label class="text-light d-block mb-2">Pasirinkite sudėtingumą:</label>
+                <div class="difficulty-options">
+                  <label>
+                    <input type="radio" name="difficulty" value="easy" checked>
+                    Lengvas (4×3)
+                  </label>
+                  <label>
+                    <input type="radio" name="difficulty" value="hard">
+                    Sunkus (6×4)
+                  </label>
+                </div>
+              </div>
+
+              <div class="game-buttons">
+                <button type="button" id="gameStartBtn">Start</button>
+                <button type="button" id="gameResetBtn">Atnaujinti</button>
+              </div>
+            </div>
+
+            <div id="memoryGameBoard" class="memory-board">
+              <!-- Kortelės bus sugeneruotos su JavaScript -->
+            </div>
+
+            <div id="gameWinMessage" class="game-win-message"></div>
+          </div>
+
+          <!-- Statistika + laikmatis + rekordai -->
+          <div class="col-lg-4">
+            <div class="game-stats">
+              <h3>Statistika</h3>
+              <p>Ėjimų skaičius: <span id="movesCount">0</span></p>
+              <p>Sutapusių porų skaičius: <span id="matchedPairs">0</span></p>
+              <p>Laikas: <span id="gameTimer">00:00</span></p>
+              <hr class="my-2">
+              <p>Geriausias (lengvas): <span id="bestEasy">-</span></p>
+              <p>Geriausias (sunkus): <span id="bestHard">-</span></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+    <!-- /Game Section -->
+
 
 
     <!-- Media Elements for Additional Task -->
@@ -830,6 +919,8 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/custom.js"></script>
+
 <script>
   window.addEventListener("load", () => {
     document.body.classList.add("loaded");
