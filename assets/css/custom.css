@@ -428,4 +428,185 @@ section.services {
   50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+/* LD11 – kontaktų formos pop-up pranešimas */
+.custom-popup {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: linear-gradient(135deg, #00c853, #64dd17);
+  color: #fff;
+  padding: 14px 22px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  font-weight: 600;
+}
+
+.custom-popup.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#formResult p {
+  margin-bottom: 4px;
+}
+/* LD11 – formos klaidų stiliai */
+.form-control.is-invalid {
+  border-color: #ff4d4d !important;
+  box-shadow: 0 0 0 0.15rem rgba(255, 77, 77, 0.35);
+}
+
+.error-message {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: #ff8080;
+}
+
+/* Neaktyvus submit mygtukas */
+#submitButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+/* ===========================
+   LD12 – Atminties žaidimo stiliai
+=========================== */
+
+.game-section {
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+
+.game-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.difficulty-options {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+}
+
+.difficulty-options label {
+  color: #e8e8e8;
+  cursor: pointer;
+}
+
+.difficulty-options input {
+  margin-right: 6px;
+}
+
+.game-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* Lenta */
+.memory-board {
+  display: grid;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+/* 4×3 = 12 kortelių */
+.memory-board.easy {
+  grid-template-columns: repeat(4, minmax(70px, 100px));
+}
+
+/* 6×4 = 24 kortelės */
+.memory-board.hard {
+  grid-template-columns: repeat(6, minmax(60px, 90px));
+}
+
+/* Kortelės */
+.memory-card {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  perspective: 800px;
+}
+
+.memory-card:focus {
+  outline: none;
+}
+
+/* vidus – flip animacija */
+.memory-card .card-inner {
+  position: relative;
+  width: 100%;
+  padding-top: 130%; /* aspect ratio */
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease;
+}
+
+.memory-card.flipped .card-inner,
+.memory-card.matched .card-inner {
+  transform: rotateY(180deg);
+}
+
+.memory-card .card-front,
+.memory-card .card-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* užversta pusė */
+.memory-card .card-front {
+  background: linear-gradient(135deg, #0073b1, #00c6ff);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* atversta pusė */
+.memory-card .card-back {
+  background: #1e1e1e;
+  border: 2px solid #00c6ff;
+  transform: rotateY(180deg);
+  font-size: 2rem;
+}
+
+/* sutapusi pora – šiek tiek pakeičiam spalvą */
+.memory-card.matched .card-back {
+  border-color: #00e676;
+  box-shadow: 0 0 15px rgba(0, 230, 118, 0.6);
+}
+
+/* Statistika ir laimėjimas */
+.game-stats {
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 16px;
+  padding: 18px 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.game-stats h3 {
+  margin-bottom: 10px;
+}
+
+.game-stats p {
+  margin-bottom: 6px;
+}
+
+.game-win-message {
+  margin-top: 18px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #00e676;
+}
+
 
